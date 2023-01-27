@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <style>
+      @import "https://unpkg.com/open-props";
+      @import "https://unpkg.com/open-props/masks.edges.min.css";
+
+      html{
+        /*scroll-padding-top:20px;*/
+        scroll-behavior: smooth;
+      }
+      *{
+        margin: 0;
+      }
+
+      #menu{
+        position:fixed;
+        background-color: rgb(10,10,10);
+        top: 50%;
+        transform: translate(0, -50%);
+        right:2vw;
+        padding:5px;
+        z-index: 5;
+      }
+
+      .menuNav{
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        background: white;
+        border-radius: var(--radius-round);
+        vertical-align: top;
+        transition: .3s;
+      }
+      .menuNav:hover{
+        background: grey;
+        transition: .3s;
+      }
+
+      .panel{
+        min-height:100vh;
+
+      }
+
+      .sectionWrapper{
+        position:sticky;
+          top:50%;
+          left:50%;
+          transform: translate(-50%,-50%);
+            background-color:white;
+            width:50vw;
+            min-height:40vh;
+      }
+      .section{
+      }
+
+      #first{
+        background-color:red;
+      }
+      #second{
+        background-color:blue;
+      }
+      #third{
+        background-color:green;
+      }
+      #fourth{
+        background-color:yellow;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div id="menu">
+      <span href="#first" class="menuNav" id="one"> </span><br><br>
+      <span href="#second" class="menuNav" id="two"> </span><br><br>
+      <span href="#third" class="menuNav" id="three"> </span><br><br>
+      <span href="#fourth" class="menuNav" id="four"> </span>
+    </div>
+
+    <div class="panel" id="first">
+      <div class="sectionWrapper">
+        <div class="section">
+          a
+        </div>
+      </div>
+    </div>
+    <div class="panel" id="second">
+      <div class="sectionWrapper">
+        <div class="section">
+n
+        </div>
+      </div>
+    </div>
+    <div class="panel" id="third">
+      <div class="sectionWrapper">
+        <div class="section">
+e
+        </div>
+      </div>
+    </div>
+    <div class="panel" id="fourth">
+      <div class="sectionWrapper">
+        <div class="section">
+ah        </div>
+      </div>
+    </div>
+
+      <script>
+        $('#one').click(function(){
+          window.location = '#first';
+        });
+        $('#two').click(function(){
+          window.location = '#second';
+        });
+        $('#three').click(function(){
+          window.location = '#third';
+        });
+        $('#four').click(function(){
+          window.location = '#fourth';
+        });
+      </script>
+  </body>
+
+</html>
