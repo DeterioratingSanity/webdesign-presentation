@@ -27,7 +27,8 @@
       color:white;
       background:black;
     }
-    html{
+    .sect{
+      scroll-behavior: smooth;
     }
     body{
       cursor: url(cursor.svg), auto;
@@ -119,11 +120,14 @@
       box-shadow: -20px 20px 40px white;
     }
     .three {
+      box-shadow: 20px 20px 40px white;
     }
     .four {
+      box-shadow: 20px -20px 40px white;
 
     }
     .five {
+      box-shadow: -20px -20px 40px white;
     }
 
 
@@ -142,6 +146,7 @@
       box-shadow: var(--inner-shadow-4);  /* inner-shadow? */
       font-family: "Source Code Pro" ,var(--font-mono);
       font-size:1.5em;
+      scroll-padding-top: .7em;
     }
     .sect::-webkit-scrollbar {
           display: none;
@@ -165,6 +170,29 @@
        color:black;
        background:white;
     }
+    code{
+      background-color: var(--gray-3);
+      margin:.3em 1em 0 1em;
+      padding:.3em 1em .3em 1em;
+      display:block;
+      border-radius: var(--radius-4);
+    }
+    .sectNav{
+      content: '';
+      display: block;
+      width: 40px;
+      height: 40px;
+      background: white;
+      border-radius: var(--radius-round);
+      margin:30px;
+        position:sticky;
+    }
+    .navWrap{
+      position:fixed;
+      top:50%;
+      left:80%;
+      transform: translate(-50%,-50%);
+    }
     </style>
   </head>
 
@@ -184,7 +212,7 @@
 
             --> something to the effect of
 			      <br>hosting process; sourcecode stuff
-			      
+
 					</div>
 		    </section>
 
@@ -192,37 +220,112 @@
 		      <span class="label">a</span>
 		      <div class="sect">
             <!--readme / iteration (b)
-		
+
             -->
             a
 					</div>
 		    </section>
 
 		    <section class="panel three">
-		      <span class="label">Libraries</span>
+		      <span class="label">Library Utilization</span>
 					<div class="sect">
             <!--library use (w)
               efficiency, uniformity
 
               flickity, fullcalendar
-            -->say where we got components<br><br>
-						point out where we used larger-form elements<br><br>
-						
-		openprops: gradients, esoteric border-radius stuff, inset element shadows<br><br>
-						
-		scrollmagic: (atypical scroll direction) <br>
-		<div style="padding-left:5px">
-			tweenmax: foundational components for scrollmagic functionality.
-						</div> <br><br>
-						
-		fullcalendar: foundation w/ basic navigation and display for calendar; own utilization for scale display (callout source) <br><br>
-				
-		===	<br><br>			
-						
-		flickity [<span style="color:red">template</span>]: carousel<br>
-						
-						
+            -->
+
+		<div style="min-height:107%"><span id="libOne">OpenProps [<span style="color:green">library</span>]:</span> gradients, esoteric border-radius stuff, inset element shadows<br><br><code>
+      @keyframes shift {<br>
+        &emsp;0% {border-radius: var(--radius-blob-2)};<br>
+        &emsp;25% {border-radius: var(--radius-blob-5)};<br>
+        &emsp;50% {border-radius: var(--radius-blob-3)};<br>
+        &emsp;75% {border-radius: var(--radius-blob-4)};<br>
+        &emsp;100% {border-radius: var(--radius-blob-1)};<br>
+      }<br>
+    </code><br>
+    <img style="width:80%;display:block; margin-left:auto;margin-right:auto"src="ophighlight.gif" alt="demonstration"></div><br><br><br><br>
+
+		<div style="min-height:120%"><span id="libTwo">ScrollMagic [<span style="color:green">library</span>]:</span> timing and components to animate on scroll <br><br>
+
+      <code>
+        TweenLite.defaultEase = Linear.easeNone;<br>
+        var controller = new ScrollMagic.Controller();<br>
+        var tl = new TimelineMax();<br>
+        tl.from("section.panel.two", 1, {xPercent: 150});<br>
+        tl.from("section.panel.three", 1, {yPercent: -150});<br>
+        tl.from("section.panel.four", 1, {xPercent: -150});<br>
+        tl.from("section.panel.five", 1, {xPercept: 50}); /**empty but fixes scroll discrepancy**/<br>
+        <br>
+        <br>
+        new ScrollMagic.Scene({<br>
+          &emsp;triggerElement: "#pinMaster",<br>
+          &emsp;triggerHook: "onLeave",<br>
+          &emsp;duration: "200%"<br>
+        })<br>
+          &emsp;.setPin("#pinMaster")<br>
+        &emsp;  .setTween(tl)<br>
+        &emsp;  .addTo(controller);<br>
+      </code><br>
+
+      </div>
+		<div style="padding-left:1em;min-height:120%">
+			<span id="libThree">TweenMax [<span style="color:green">library</span>]:</span> not its own unique thing, rather foundational components used by ScrollMagic<br><br>
+      <code>
+        TweenLite.defaultEase = Linear.easeNone;<br><br>
+        var tl = new TimelineMax();<br><br>
+
+        .setTween("id", timing, {behavior})
+      </code>
+</div>
+
+
+
+    <div style="min-height:107%"><span id="libFour">FullCalendar [<span style="color:orange">partial template</span>]:</span> foundation w/ basic navigation and display for calendar; own utilization for scale display (callout source) <br><br>
+        <code>
+          document.addEventListener('DOMContentLoaded',function(){<br>
+          				&emsp;var calendarElement = document.getElementById('calendar');<br>
+          				&emsp;var calendar = new FullCalendar.Calendar(calendarElement, {<br>
+          						&emsp;&emsp;fixedWeekCount: false,<br>
+          						&emsp;&emsp;// Because this library camel-cases the user facing buttons<br>
+          						&emsp;&emsp;buttonText: {<br>
+          							&emsp;&emsp;&ensp;today: 'Today',<br>
+          							&emsp;&emsp;&ensp;dayGridMonth: 'Month',<br>
+          							&emsp;&emsp;&ensp;dayGrid: 'Day'<br>
+          						&emsp;&emsp;},<br>
+          						&emsp;&emsp;// Screen-Size Dependent Display Functionality<br>
+          						&emsp;&emsp;headerToolbar: $(window).width() < 750 ? {left: 'title', center:'', right:''} : {left: 'title',	center: '', right: 'today prev,next dayGridMonth,dayGrid'},<br>
+          						&emsp;&emsp;initialView: $(window).width() < 750 ? 'dayGrid' : 'dayGridMonth',<br>
+          						&emsp;&emsp;height:'45vh',<br>
+          					&emsp;events: [<br>
+          						&emsp;&emsp;{<br>
+          							&emsp;&emsp;&ensp;title: 'Dog Park Play Time',<br>
+          							&emsp;&emsp;&ensp;daysOfWeek: [0],<br>
+          							&emsp;&emsp;&ensp;startRecur: '2022-01-01',<br>
+          							&emsp;&emsp;&ensp;endRecur: '2023-12-31',<br>
+          							&emsp;&emsp;&ensp;backgroundColor: 'rgb(222,102,102)',<br>
+          							&emsp;&emsp;&ensp;borderColor: 'rgb(222,102,102)'<br>
+          						&emsp;&emsp;},<br>
+        </code><br>
+    </div><br><br>
+
+		<div style="min-height:107%"><span id="libFive">Flickity [<span style="color:red">template</span>]:</span> carousel<br><br>
+    <code>
+      &lt;div class="gallery js-flickity" data-flickity-options='{ "wrapAround": true }'&gt;<br>
+					&emsp;  &lt;div class="gallery-cell" id="displayFirst">&lt;/div&gt;<br>
+					&emsp;  &lt;div class="gallery-cell" id="displaySecond">&lt;/div&gt;<br>
+					&emsp;  &lt;div class="gallery-cell" id="displayThird">&lt;/div&gt;<br>
+		  &lt;/div&gt;
+    </code><br></div>
+    <div style="height:40%"></div>
 						</div>
+            <div class='navWrap'>
+        <a class="sectNav" href="#libOne"></a>
+        <a class="sectNav" href="#libTwo"></a>
+        <a class="sectNav" href="#libThree"></a>
+        <a class="sectNav" href="#libFour"></a>
+        <a class="sectNav" href="#libFive"></a>
+        </div>
 		    </section>
 
 		    <section class="panel four">
@@ -252,9 +355,9 @@ TweenLite.defaultEase = Linear.easeNone;
 var controller = new ScrollMagic.Controller();
 var tl = new TimelineMax();
 tl.from("section.panel.two", 1, {xPercent: 150, yPercent: -60});
-tl.from("section.panel.three", 1, {yPercent: -150});
-tl.from("section.panel.four", 1, {xPercent: -150});
-tl.from("section.panel.five",1  ,  {yPercent: 150});
+tl.from("section.panel.three", 1, {yPercent: -150, xPercent:-30});
+tl.from("section.panel.four", 1, {xPercent: -150, yPercent: 60});
+tl.from("section.panel.five",1  ,  {yPercent: 150, xPercent:90});
 tl.from("section.panel.six",1  ,   {xPercent: 150});
 
 
