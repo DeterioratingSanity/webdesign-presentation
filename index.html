@@ -180,18 +180,35 @@
     .sectNav{
       content: '';
       display: block;
-      width: 40px;
-      height: 40px;
+      width: 3.125em;
+      height: 3.125em;
       background: white;
       border-radius: var(--radius-round);
       margin:30px;
         position:sticky;
+        transition: .5s;
+    }
+    .splitter{
+        content: '';
+        display: block;
+        width: 3.125em;
+        height: 0.625em;
+        background: white;
+        margin:30px;span
+    }
+    .sectNav:hover{
+      background:var(--gray-5);
+      transition: .3s;
     }
     .navWrap{
       position:fixed;
       top:50%;
-      left:80%;
-      transform: translate(-50%,-50%);
+      left:80vw;
+      transform: translate(0,-50%);
+    }
+    .exemplarImage{
+      height:40vh;
+      padding:0 1em 0 1em;
     }
     </style>
   </head>
@@ -217,136 +234,179 @@
 		    </section>
 
 		    <section class="panel two">
-		      <span class="label">a</span>
+		      <span class="label">ReadMe</span>
 		      <div class="sect">
             <!--readme / iteration (b)
 
             -->
-            a
+            design iteration
 					</div>
 		    </section>
 
 		    <section class="panel three">
 		      <span class="label">Library Utilization</span>
 					<div class="sect">
-            <!--library use (w)
-              efficiency, uniformity
+                      <!--library use (w)
+                        efficiency, uniformity
 
-              flickity, fullcalendar
-            -->
+                        flickity, fullcalendar
+                      -->
 
-		<div style="min-height:107%"><span id="libOne">OpenProps [<span style="color:green">library</span>]:</span> gradients, esoteric border-radius stuff, inset element shadows<br><br><code>
-      @keyframes shift {<br>
-        &emsp;0% {border-radius: var(--radius-blob-2)};<br>
-        &emsp;25% {border-radius: var(--radius-blob-5)};<br>
-        &emsp;50% {border-radius: var(--radius-blob-3)};<br>
-        &emsp;75% {border-radius: var(--radius-blob-4)};<br>
-        &emsp;100% {border-radius: var(--radius-blob-1)};<br>
-      }<br>
-    </code><br>
-    <img style="width:80%;display:block; margin-left:auto;margin-right:auto"src="ophighlight.gif" alt="demonstration"></div><br><br><br><br>
+          		<div style="min-height:107%"><span id="libOne">OpenProps [<span style="color:green">library</span>]:</span> gradients, esoteric border-radius stuff, inset element shadows<br><br><code>
+                @keyframes shift {<br>
+                  &emsp;0% {border-radius: var(--radius-blob-2)};<br>
+                  &emsp;25% {border-radius: var(--radius-blob-5)};<br>
+                  &emsp;50% {border-radius: var(--radius-blob-3)};<br>
+                  &emsp;75% {border-radius: var(--radius-blob-4)};<br>
+                  &emsp;100% {border-radius: var(--radius-blob-1)};<br>
+                }<br>
+              </code><br>
+              <img style="width:80%;display:block; margin-left:auto;margin-right:auto"src="ophighlight.gif" alt="demonstration"></div><br><br><br><br>
 
-		<div style="min-height:120%"><span id="libTwo">ScrollMagic [<span style="color:green">library</span>]:</span> timing and components to animate on scroll <br><br>
+          		<div style="min-height:120%"><span id="libTwo">ScrollMagic [<span style="color:green">library</span>]:</span> timing and components to animate on scroll <br><br>
 
-      <code>
-        TweenLite.defaultEase = Linear.easeNone;<br>
-        var controller = new ScrollMagic.Controller();<br>
-        var tl = new TimelineMax();<br>
-        tl.from("section.panel.two", 1, {xPercent: 150});<br>
-        tl.from("section.panel.three", 1, {yPercent: -150});<br>
-        tl.from("section.panel.four", 1, {xPercent: -150});<br>
-        tl.from("section.panel.five", 1, {xPercept: 50}); /**empty but fixes scroll discrepancy**/<br>
-        <br>
-        <br>
-        new ScrollMagic.Scene({<br>
-          &emsp;triggerElement: "#pinMaster",<br>
-          &emsp;triggerHook: "onLeave",<br>
-          &emsp;duration: "200%"<br>
-        })<br>
-          &emsp;.setPin("#pinMaster")<br>
-        &emsp;  .setTween(tl)<br>
-        &emsp;  .addTo(controller);<br>
-      </code><br>
+                <code>
+                  TweenLite.defaultEase = Linear.easeNone;<br>
+                  var controller = new ScrollMagic.Controller();<br>
+                  var tl = new TimelineMax();<br>
+                  tl.from("section.panel.two", 1, {xPercent: 150});<br>
+                  tl.from("section.panel.three", 1, {yPercent: -150});<br>
+                  tl.from("section.panel.four", 1, {xPercent: -150});<br>
+                  tl.from("section.panel.five", 1, {xPercept: 50}); /**empty but fixes scroll discrepancy**/<br>
+                  <br>
+                  <br>
+                  new ScrollMagic.Scene({<br>
+                    &emsp;triggerElement: "#pinMaster",<br>
+                    &emsp;triggerHook: "onLeave",<br>
+                    &emsp;duration: "200%"<br>
+                  })<br>
+                    &emsp;.setPin("#pinMaster")<br>
+                  &emsp;  .setTween(tl)<br>
+                  &emsp;  .addTo(controller);<br>
+                </code><br>
 
-      </div>
-		<div style="padding-left:1em;min-height:120%">
-			<span id="libThree">TweenMax [<span style="color:green">library</span>]:</span> not its own unique thing, rather foundational components used by ScrollMagic<br><br>
-      <code>
-        TweenLite.defaultEase = Linear.easeNone;<br><br>
-        var tl = new TimelineMax();<br><br>
+                </div>
+          		<div style="padding-left:1em;min-height:120%">
+          			<span id="libThree">TweenMax [<span style="color:green">library</span>]:</span> not its own unique thing, rather foundational components used by ScrollMagic<br><br>
+                <code>
+                  TweenLite.defaultEase = Linear.easeNone;<br><br>
+                  var tl = new TimelineMax();<br><br>
 
-        .setTween("id", timing, {behavior})
-      </code>
-</div>
+                  .setTween("id", timing, {behavior})
+                </code>
+          </div>
 
 
+              <div style="min-height:107%"><span id="libFour">JQuery [<span style="color: green">Library</span>]: facilitates referencing html elements in javascript with greater efficiency<br><br>
+                <code>
+                  $('.navOne').click(function(){<br>
+                    &emsp;window.open('./products.html', '_self');<br>
+                    &emsp;return false;<br>
+                  });<br>
+          <br>
+                  $('.navTwo').click(function(){<br>
+                    &emsp;window.open('./reviews.html', '_self');<br>
+                    &emsp;return false;<br>
+                  });<br>
+          <br>
+                  $('.navThree').click(function(){<br>
+                    &emsp;window.open('./contact.html', '_self');<br>
+                    &emsp;return false;<br>
+                  });<br>
+                </code>
 
-    <div style="min-height:107%"><span id="libFour">FullCalendar [<span style="color:orange">partial template</span>]:</span> foundation w/ basic navigation and display for calendar; own utilization for scale display (callout source) <br><br>
-        <code>
-          document.addEventListener('DOMContentLoaded',function(){<br>
-          				&emsp;var calendarElement = document.getElementById('calendar');<br>
-          				&emsp;var calendar = new FullCalendar.Calendar(calendarElement, {<br>
-          						&emsp;&emsp;fixedWeekCount: false,<br>
-          						&emsp;&emsp;// Because this library camel-cases the user facing buttons<br>
-          						&emsp;&emsp;buttonText: {<br>
-          							&emsp;&emsp;&ensp;today: 'Today',<br>
-          							&emsp;&emsp;&ensp;dayGridMonth: 'Month',<br>
-          							&emsp;&emsp;&ensp;dayGrid: 'Day'<br>
-          						&emsp;&emsp;},<br>
-          						&emsp;&emsp;// Screen-Size Dependent Display Functionality<br>
-          						&emsp;&emsp;headerToolbar: $(window).width() < 750 ? {left: 'title', center:'', right:''} : {left: 'title',	center: '', right: 'today prev,next dayGridMonth,dayGrid'},<br>
-          						&emsp;&emsp;initialView: $(window).width() < 750 ? 'dayGrid' : 'dayGridMonth',<br>
-          						&emsp;&emsp;height:'45vh',<br>
-          					&emsp;events: [<br>
-          						&emsp;&emsp;{<br>
-          							&emsp;&emsp;&ensp;title: 'Dog Park Play Time',<br>
-          							&emsp;&emsp;&ensp;daysOfWeek: [0],<br>
-          							&emsp;&emsp;&ensp;startRecur: '2022-01-01',<br>
-          							&emsp;&emsp;&ensp;endRecur: '2023-12-31',<br>
-          							&emsp;&emsp;&ensp;backgroundColor: 'rgb(222,102,102)',<br>
-          							&emsp;&emsp;&ensp;borderColor: 'rgb(222,102,102)'<br>
-          						&emsp;&emsp;},<br>
-        </code><br>
-    </div><br><br>
+              </div>
 
-		<div style="min-height:107%"><span id="libFive">Flickity [<span style="color:red">template</span>]:</span> carousel<br><br>
-    <code>
-      &lt;div class="gallery js-flickity" data-flickity-options='{ "wrapAround": true }'&gt;<br>
-					&emsp;  &lt;div class="gallery-cell" id="displayFirst">&lt;/div&gt;<br>
-					&emsp;  &lt;div class="gallery-cell" id="displaySecond">&lt;/div&gt;<br>
-					&emsp;  &lt;div class="gallery-cell" id="displayThird">&lt;/div&gt;<br>
-		  &lt;/div&gt;
-    </code><br></div>
-    <div style="height:40%"></div>
-						</div>
-            <div class='navWrap'>
-        <a class="sectNav" href="#libOne"></a>
-        <a class="sectNav" href="#libTwo"></a>
-        <a class="sectNav" href="#libThree"></a>
-        <a class="sectNav" href="#libFour"></a>
-        <a class="sectNav" href="#libFive"></a>
-        </div>
+              <div style="min-height:107%"><span id="libFive">FullCalendar [<span style="color:orange">partial template</span>]:</span> foundation w/ basic navigation and display for calendar; own utilization for scale display (callout source) <br><br>
+                  <code>
+                    document.addEventListener('DOMContentLoaded',function(){<br>
+                    				&emsp;var calendarElement = document.getElementById('calendar');<br>
+                    				&emsp;var calendar = new FullCalendar.Calendar(calendarElement, {<br>
+                    						&emsp;&emsp;fixedWeekCount: false,<br>
+                    						&emsp;&emsp;// Because this library camel-cases the user facing buttons<br>
+                    						&emsp;&emsp;buttonText: {<br>
+                    							&emsp;&emsp;&ensp;today: 'Today',<br>
+                    							&emsp;&emsp;&ensp;dayGridMonth: 'Month',<br>
+                    							&emsp;&emsp;&ensp;dayGrid: 'Day'<br>
+                    						&emsp;&emsp;},<br>
+                    						&emsp;&emsp;// Screen-Size Dependent Display Functionality<br>
+                    						&emsp;&emsp;headerToolbar: $(window).width() < 750 ? {left: 'title', center:'', right:''} : {left: 'title',	center: '', right: 'today prev,next dayGridMonth,dayGrid'},<br>
+                    						&emsp;&emsp;initialView: $(window).width() < 750 ? 'dayGrid' : 'dayGridMonth',<br>
+                    						&emsp;&emsp;height:'45vh',<br>
+                    					&emsp;events: [<br>
+                    						&emsp;&emsp;{<br>
+                    							&emsp;&emsp;&ensp;title: 'Dog Park Play Time',<br>
+                    							&emsp;&emsp;&ensp;daysOfWeek: [0],<br>
+                    							&emsp;&emsp;&ensp;startRecur: '2022-01-01',<br>
+                    							&emsp;&emsp;&ensp;endRecur: '2023-12-31',<br>
+                    							&emsp;&emsp;&ensp;backgroundColor: 'rgb(222,102,102)',<br>
+                    							&emsp;&emsp;&ensp;borderColor: 'rgb(222,102,102)'<br>
+                    						&emsp;&emsp;},<br>
+                  </code><br>
+              </div><br><br>
+
+          		<div style="min-height:107%"><span id="libSix">Flickity [<span style="color:red">template</span>]:</span> carousel implementation<br><br>
+              <code>
+                &lt;div class="gallery js-flickity" data-flickity-options='{ "wrapAround": true }'&gt;<br>
+          					&emsp;  &lt;div class="gallery-cell" id="displayFirst">&lt;/div&gt;<br>
+          					&emsp;  &lt;div class="gallery-cell" id="displaySecond">&lt;/div&gt;<br>
+          					&emsp;  &lt;div class="gallery-cell" id="displayThird">&lt;/div&gt;<br>
+          		  &lt;/div&gt;
+              </code><br></div>
+
+
+              <div style="height:40%"></div>
+          						</div>
+                      <div class='navWrap'>
+                  <a class="sectNav" href="#libOne"></a>
+                  <a class="sectNav" href="#libTwo"></a>
+                  <a class="sectNav" href="#libThree"></a>
+                  <a class="sectNav" href="#libFour"></a>
+                  <span class="splitter"></span>
+                  <a class="sectNav" href="#libFive"></a>
+                  <a class="sectNav" href="#libSix"></a>
+                  </div>
 		    </section>
 
 		    <section class="panel four">
-		      <span class="label">a</span>
+		      <span class="label">Compatibility</span>
 		      <div class="sect">
-            <!--platform
+            <!--platform-->
+	       <span id="disOne"></span><br><br>
+         <div style="text-align: center;">
+             <img src="iphonese.gif" alt="iphone se example" class="exemplarImage">
+             <img src="pixel2.gif" alt="pixel 2 example" class="exemplarImage">
+             <img src="galaxy9.gif" alt="galaxy s9 example" class="exemplarImage"><br>
+             IPhone SE, Google Pixel 2, Galaxy S9
+          </div><br><span id="disTwo"></span><br><br>
+          <div style="text-align: center;">
+              <img src="galaxys20.gif" alt="galaxy s20 example" class="exemplarImage">
+              <img src="nokian9.gif" alt="nokia n9 example" class="exemplarImage">
+              <img src="iphonese.gif" alt="#" class="exemplarImage"><br>
 
-            -->Demonstrate useability; videos of site in different screen sizes. if pos, embed in a mockup of that device's screen.<br>
-			      <br>
-	       show specifics on sizing changes
+           </div>
+          <br><br>
+
 					</div>
+                  <div class='navWrap'>
+              <a class="sectNav" href="#disOne"></a>
+              <a class="sectNav" href="#disTwo"></a><!--
+              <a class="sectNav" href="#"></a>
+              <a class="sectNav" href="#"></a>
+              <span class="splitter"></span>
+              <a class="sectNav" href="#"></a>
+              <a class="sectNav" href="#"></a>-->
+              </div>
 		    </section>
-
+<!--
         <section class="panel five">
 		      <span class="label">a</span>
 		      <div class="sect">
-            <!--glow
+            <!-glow
 
-            -->nav stuff
+            ->nav stuff
 					</div>
-		    </section>
+		    </section>-->
 		  </div>
 		</div>
 
