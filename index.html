@@ -37,12 +37,11 @@
         /*  display: none; */
     }
     .head{
-      background-image: var(--gradient-15); /*Or 30*/
       height:100vh;
     }
     .logo{
       position:relative;
-      background-color:white;
+      background: var(--gradient-6);
       text-align:center;
       animation: shift 5s var(--ease-in-out-3) alternate infinite;
       border-radius: var(--radius-blob-1);
@@ -108,26 +107,30 @@
       width: 100vw;
       position: absolute;
       scroll-snap-align:center;
-      background-image: var(--gradient-8);
     }
 
     #pinMaster {
       position: relative;
     }
     .one {
+    background-image: var(--gradient-8);
     }
     .two {
       box-shadow: -20px 20px 40px white;
+      background-image: var(--gradient-8);
     }
     .three {
       box-shadow: 20px 20px 40px white;
+      background-image: var(--gradient-8);
     }
     .four {
       box-shadow: 20px -20px 40px white;
+      background-image: var(--gradient-8);
 
     }
     .five {
       box-shadow: -20px -20px 40px white;
+      background-image: var(--gradient-8);
     }
 
 
@@ -209,7 +212,30 @@
     .exemplarImage{
       height:40vh;
       padding:0 1em 0 1em;
-    }
+    }#underhead{
+  font-size: 8vmin;
+  display: inline-block;
+}
+#underhead::before{
+  content: '';
+  display: inline-block;
+  width: 2vmin;
+  height: 2vmin;
+  background-image: var(--gradient-23);
+  border-radius:var(--radius-round);
+  vertical-align:middle;
+  margin-right:1vmin;
+}
+#underhead::after{
+  content: '';
+  display: inline-block;
+  width: 2vmin;
+  height: 2vmin;
+  background-image: var(--gradient-23);
+  border-radius:var(--radius-round);
+  vertical-align:middle;
+  margin-left:1vmin;
+}
     </style>
   </head>
 
@@ -218,6 +244,28 @@
       Consider homepage-esque scroll maneuvering, int. some ele from southern hanger and from surveyRepo
     -->
     <!--<span id="label">Info</span>-->
+<!--
+    <div style="height:100vh">
+      <span style="position:absolute; top:50%; left: 50%; transform: translate(-50%, -50%); font-family: var(-font-mono), sans-serif; font-size: 30em;">
+          info
+      </span>
+    </div>
+-->
+
+<div class="head">
+			<div class="logo" id="logH"><p class="heroText"><span class="heroMid">D</span>oggone goo<span class="heroMid">D</span><br>
+				<span id="underhead">info</span></p>
+
+			</div>
+				<div style="position:absolute;bottom:5vh;text-align:center;margin:auto;
+   background: var(--gradient-23);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+   font-variant:small-caps;
+   white-space:nowrap;
+   font-weight: var(--font-weight-4);
+   font-family: var(--font-serif);font-size:4vmin; width:100%">↓ scroll ↓</div>
+		</div>
 
     <div id="pinMaster">
 		  <div id="pinContainer">
@@ -232,7 +280,7 @@
             <code>
               CNAME - www.doggonegoodglynn.dog
             </code>
-            <div style="margin-left:2em">
+            <div style="margin-left:2em"><br>
               c(anonical) name - points the original address to something that looks a little <i>nicer</i><br><br>
 
               site was hosted via github pages; domain was registered through porkbun
@@ -241,7 +289,7 @@
 		    </section>
 
 		    <section class="panel two">
-		      <span class="label">ReadMe</span>
+		      <span class="label" >ReadMe</span>
 		      <div class="sect">
             <!--readme / iteration (b)
 
@@ -375,7 +423,17 @@
                   </div>
 		    </section>
 
-		    <section class="panel four">
+        <section class="panel four">
+         <span class="label" >Format</span>
+         <div class="sect">
+            <!--readme / iteration (b)
+
+            -->
+            decision process
+         </div>
+       </section>
+
+		    <section class="panel five">
 		      <span class="label">Compatibility</span>
 		      <div class="sect">
             <!--platform-->
@@ -395,15 +453,23 @@
                <img src="iphonex.gif" alt="iphone x example" class="exemplarImage">
                <img src="nesthub.gif" alt="nest hub example" class="exemplarImage"><br>
                IPhone X, Google Nest Hub
-            </div>
+            </div><br><span id="disFour"></span><br><br>
+            <div style="text-align: center;">
+                <img src="alternationdocumentationone.jpg" alt="alternate 1" class="exemplarImage">
+                <img src="alternationdocumentationtwo.jpg" alt="alternate 2" class="exemplarImage"><br>
+                changed display size to accomodate screen dimensions
+             </div>
+
+
           <br><br>
 
 					</div>
                   <div class='navWrap'>
               <a class="sectNav" href="#disOne"></a>
               <a class="sectNav" href="#disTwo"></a>
-              <a class="sectNav" href="#disThree"></a><!--
-              <a class="sectNav" href="#"></a>
+              <a class="sectNav" href="#disThree"></a>
+              <span class="splitter"></span>
+              <a class="sectNav" href="#disFour"></a><!--
               <span class="splitter"></span>
               <a class="sectNav" href="#"></a>
               <a class="sectNav" href="#"></a>-->
